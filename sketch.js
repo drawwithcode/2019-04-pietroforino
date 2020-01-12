@@ -1,4 +1,5 @@
   var radius = 150;
+  var numberPoints = 101;
   var centerX = 0;
   var centerY = 0;
   var points = [];
@@ -22,28 +23,30 @@
       var myCanvas = createCanvas(windowWidth, windowHeight);
       myCanvas.parent("container");
 
-      analyzer = new p5.Amplitude();  // create a new Amplitude analyzer
-      fft = new p5.FFT(); //frequency
-      analyzer.setInput(song); // Patch the input to an volume analyzer
+      analyzer = new p5.Amplitude();  // amplitude analyzer
+      fft = new p5.FFT(); // frequency
+      analyzer.setInput(song);
 
-
+      // set the center of window as axis origin
       translate(windowWidth/2, windowHeight/2);
       rotate(PI / 2.0);
 
-      var tre = document.getElementById('tre');
-      var quattro = document.getElementById('quattro');
-      tre.addEventListener('click', inverted);
-      quattro.addEventListener('click', normal)
+      // custom controls
+        // inverted color
+        var tre = document.getElementById('tre');
+        var quattro = document.getElementById('quattro');
+        tre.addEventListener('click', inverted);
+        quattro.addEventListener('click', normal)
 
-      var uno = document.getElementById('uno')
-      var due = document.getElementById('due')
-      uno.addEventListener('click', playSong)
-      due.addEventListener('click', stopSong)
+        // play/pause button
+        var uno = document.getElementById('uno')
+        var due = document.getElementById('due')
+        uno.addEventListener('click', playSong)
+        due.addEventListener('click', stopSong)
 
 
-      // sets all the points
-      // one extra point to connect line
-      for (var i = 0; i < 101; i++) {
+      // sets 100 points + one (for better connection)
+      for (var i = 0; i < numberPoints; i++) {
           var degree = i * (360 / 100);
           var radian = degree * (PI / 180);
           var p = new Point(radian);
