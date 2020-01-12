@@ -1,7 +1,3 @@
-  // -----------
-  // Sabrina Kantor
-  // -----------
-
   var radius = 150;
   var centerX = 0;
   var centerY = 0;
