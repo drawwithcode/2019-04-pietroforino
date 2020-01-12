@@ -97,14 +97,6 @@
 
   }
 
-  function CoSine(angle, add) {
-      return (cos(angle) * radius + add) + centerX;
-  }
-
-  function Sine(angle, add) {
-      return (-sin(angle) * radius + add) + centerY;
-  }
-
   function draw() {
       background(coloreSfondo)
 
