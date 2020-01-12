@@ -104,15 +104,15 @@
       var freq = fft.analyze();
 
 
-      //base points(49 - 63) frequency(96,128)
+      //base points + frequency(96,128)
       var base = new Frequency(freq.length - (freq.length / 4), freq.length);
 
       //mid-low 33 - 48
-      var midLow = new Frequency(freq.length - 2 * (freq.length / 4),
+      var mid1 = new Frequency(freq.length - 2 * (freq.length / 4),
           freq.length - (freq.length / 4));
 
       //mid-high 17 - 32
-      var midHigh = new Frequency(freq.length - 3 * (freq.length / 4),
+      var mid2 = new Frequency(freq.length - 3 * (freq.length / 4),
           freq.length - 2 * (freq.length / 4));
 
       //treble 0 - 16
