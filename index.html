@@ -1,13 +1,46 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8">
-    <meta name="viewport" width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0>
-    <style> body {padding: 0; margin: 0;} </style>
-    <script src="p5.min.js"></script>
-    <script src="addons/p5.sound.min.js"></script>
-    <script src="sketch.js"></script>
+    <meta charset="UTF-8">
+    <title>Pietro Forino - Assegnatory #4 - Creative Coding</title>
+    <script src="libraries/p5.js" type="text/javascript"></script>
+    <script src="libraries/p5.dom.js" type="text/javascript"></script>
+    <script src="libraries/p5.sound.js" type="text/javascript"></script>
+    <link href="https://fonts.googleapis.com/css?family=Space+Mono&display=swap" rel="stylesheet">
+
+    <script src="sketch.js" type="text/javascript"></script>
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+
+    <style> body {padding: 0; margin: 0;} canvas {vertical-align: top;} </style>
+
+    <style>
+      #uno, #due {
+        width: 23px;
+        height: 23px;
+        position: absolute;
+        left: 2.5%;
+        bottom: 2.5%;
+        filter: brightness(0) saturate(100%) invert(8%) sepia(100%) saturate(6526%) hue-rotate(187deg) brightness(112%) contrast(146%);
+      }
+
+      #tre, #quattro {
+        width: 23px;
+        height: 23px;
+        position: absolute;
+        right: 2.5%;
+        bottom: 2.5%;
+        filter: brightness(0) saturate(100%) invert(8%) sepia(100%) saturate(6526%) hue-rotate(187deg) brightness(112%) contrast(146%);
+      }
+    </style>
   </head>
   <body>
+
+            <img src="assets/play.svg" id="uno">
+            <img src="assets/pause.svg" id="due" style="display: none;">
+            <img src="assets/invert.svg" id="tre">
+            <img src="assets/no-invert.svg" id="quattro" style="display: none;">
+
+            <div id="container"></div>
+
   </body>
 </html>
