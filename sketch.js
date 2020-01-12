@@ -1,5 +1,5 @@
   var radius = 150;
-  var numberPoints = 101;
+  var numberPoints = 101; // sets 100 points + one (for better connection)
   var centerX = 0;
   var centerY = 0;
   var points = [];
@@ -44,25 +44,24 @@
         uno.addEventListener('click', playSong)
         due.addEventListener('click', stopSong)
 
-
-      // sets 100 points + one (for better connection)
       for (var i = 0; i < numberPoints; i++) {
           var degree = i * (360 / 100);
           var radian = degree * (PI / 180);
           var p = new Point(radian);
-
           points.push(p);
       }
 
   }
 
+  // play the song and show the pause button
   function playSong() {
-    console.log("song is playin'")
+    console.log("song is playing")
     uno.style.display = 'none'
     due.style.display = 'block'
     song.loop();
   }
 
+  // stop the song and show again the play button
   function stopSong() {
     console.log("song stopped")
     uno.style.display = 'block'
@@ -70,6 +69,7 @@
     song.pause();
   }
 
+  // invert colors of background, controls and audio visualizer
   function inverted() {
     console.log("inverted")
     quattro.style.display = 'block'
@@ -83,6 +83,7 @@
 
   }
 
+  // restore colors of background, controls and audio visualizer
   function normal() {
     console.log("normal")
     tre.style.display = 'block'
@@ -97,13 +98,11 @@
   }
 
   function CoSine(angle, add) {
-      var length = radius + add;
-      return (cos(angle) * length) + centerX;
+      return (cos(angle) * radius + add) + centerX;
   }
 
   function Sine(angle, add) {
-      var length = radius + add;
-      return (-sin(angle) * length) + centerY;
+      return (-sin(angle) * radius + add) + centerY;
   }
 
   function draw() {
@@ -157,8 +156,8 @@
   function Point(angle) {
       this.amplitude = 0;
       this.angle = angle;
-      this.xVal = CoSine(this.angle, 0);
-      this.yVal = Sine(this.angle, 0);
+      this.xVal = (cos(this.angle) * radius) + centerX;
+      this.yVal = (-sin(this.angle) * radius) + centerY;
 
       this.display = function () {
 
@@ -166,9 +165,9 @@
           var amp2 = map(this.amplitude, 0, 255, 0, -480);
 
           strokeWeight(2);
-          point(CoSine(angle, (amp2)), Sine(angle, (amp2)))
-          line(this.xVal, this.yVal, CoSine(angle, (amp)), Sine(angle, (amp)));
-          point(CoSine(angle, (amp * 3)), Sine(angle, (amp * 3)))
+          point((cos(angle) * radius + amp2) + centerX, (-sin(angle) * radius + amp2) + centerY)
+          line(this.xVal, this.yVal, (cos(angle) * radius + amp) + centerX, (-sin(angle) * radius + amp) + centerY);
+          point((cos(angle) * radius + amp * 3) + centerX, (-sin(angle) * radius + amp*3) + centerY)
 
       }
   }
