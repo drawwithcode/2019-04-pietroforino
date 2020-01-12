@@ -164,9 +164,6 @@
           var amp = map(this.amplitude, 0, 255, 0, -340);
           var amp2 = map(this.amplitude, 0, 255, 0, -480);
 
-          (cos(angle) * radius + add) + centerX
-          (-sin(angle) * radius + add) + centerY
-
           strokeWeight(2);
           point((cos(angle) * (radius + amp2)) + centerX, (-sin(angle) * (radius + amp2)) + centerY)
           line(this.xVal, this.yVal, (cos(angle) * (radius + amp)) + centerX, (-sin(angle) * (radius + amp)) + centerY);
