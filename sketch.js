@@ -103,7 +103,6 @@
       var vol = analyzer.getLevel();
       var freq = fft.analyze();
 
-
       //base points + frequency(96,128)
       var base = new Frequency(freq.length - (freq.length / 4), freq.length);
 
@@ -141,9 +140,13 @@
         var author = 'Wontolla, Kasger & Limitless - Miles Away [NCS Release]'
         text(author, 0, - windowHeight / 2.3)
       pop()
-
   }
 
+  function Frequency(low, high) {
+      this.low = low;
+      this.high = high;
+      this.value = fft.getEnergy(low, high);
+  }
 
   function Point(angle) {
       this.amplitude = 0;
@@ -160,12 +163,5 @@
           point((cos(angle) * (radius + amp2)) + centerX, (-sin(angle) * (radius + amp2)) + centerY)
           line(this.xVal, this.yVal, (cos(angle) * (radius + amp)) + centerX, (-sin(angle) * (radius + amp)) + centerY);
           point((cos(angle) * (radius + amp * 3)) + centerX, (-sin(angle) * (radius + amp * 3)) + centerY)
-
       }
-  }
-
-  function Frequency(low, high) {
-      this.low = low;
-      this.high = high;
-      this.value = fft.getEnergy(low, high);
   }
